@@ -12,30 +12,27 @@ const base = Rebase.createClass({
     messagingSenderId: "574098281160"
 });
 
-console.log(seasons);
-
 class App extends Component {
     getInitialState() {
       return {
-        saci : true
+        seasons : seasons
       }
     }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
           <table>
+            <tbody>
               <tr>
-                  <th>Campoenato</th>
+                  <th>Temporada</th>
               </tr>
-              <tr>
-                  <td></td>
-              </tr>
+                  {(Object.keys(seasons).map(function(key){
+                    return (
+                      <tr><td><a href="/{{key}}">{key}</a></td></tr>
+                    )
+                  }))}
+            </tbody>
           </table>
-        </p>
       </div>
     );
   }
