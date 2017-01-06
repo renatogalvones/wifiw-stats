@@ -4,6 +4,7 @@ import { BrowserRouter, Match, Miss } from 'react-router';
 
 import Home from './components/Home';
 import Season from './components/Season';
+import Seasons from './components/Seasons';
 import NotFound from './components/NotFound';
 
 import './index.css';
@@ -12,9 +13,9 @@ const Root = () => {
   return (
     <BrowserRouter>
       <div>
-        <h1>Root</h1>
         <Match exactly pattern="/" component={Home} />
-        <Match pattern="/season/:seasonId" component={Season} />
+        <Match exactly pattern="/seasons/" component={Home} />
+        <Match pattern="/seasons/:seasonId" component={Season} />
         <Miss component={NotFound} />
       </div>
     </BrowserRouter>

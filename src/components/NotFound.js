@@ -1,9 +1,10 @@
 import React from 'react';
+import { BrowserRouter, Match, Miss } from 'react-router';
 
 class NotFound extends React.Component {
-  render() {
+  render({ location }) {
     return (
-      <h1>Not Found</h1>  
+      <h1>Not Found</h1>
     )
   }
 }
