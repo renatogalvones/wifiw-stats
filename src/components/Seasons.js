@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
-import SeasonsData from './../seasons';
 
-class Season extends React.Component {
+class Seasons extends React.Component {
+  constructor(props) {
+    super();
+
+  }
   render() {
+    let seasons = this.props.seasons;
     return (
       <table>
         <tbody>
@@ -11,9 +15,13 @@ class Season extends React.Component {
               <th>Temporadas</th>
           </tr>
           {
-            Object.keys(SeasonsData).map(function(key){
+            Object.keys(seasons).map(function(season) {
               return (
-                <tr><td><Link {...this.props} to={"/seasons/" + key}>{key}</Link></td></tr>
+                <tr key={seasons[season].id}>
+                  <td>
+                    <Link to={"/seasons/" + seasons[season].id}>{seasons[season].id}</Link>
+                  </td>
+                </tr>
               )
             })
           }
@@ -23,4 +31,4 @@ class Season extends React.Component {
   }
 }
 
-export default Season;
+export default Seasons;

@@ -19,16 +19,20 @@ class App extends Component {
       }
     }
   render() {
+    console.log(this.state);
     return (
       <div className="App">
+        <div className="App-header">
+          <h2>Welcome to React</h2>
+        </div>
           <table>
             <tbody>
               <tr>
-                  <th>Temporada</th>
+                  <th>Campeonato</th>
               </tr>
                   {(Object.keys(seasons).map(function(key){
                     return (
-                      <tr><td><a href="/{{key}}">{key}</a></td></tr>
+                      <tr><td>a{key}</td></tr>
                     )
                   }))}
             </tbody>
