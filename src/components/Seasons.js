@@ -10,10 +10,12 @@ class Seasons extends React.Component {
     let seasons = this.props.seasons;
     return (
       <table>
-        <tbody>
+        <thead>
           <tr>
               <th>Temporadas</th>
           </tr>
+        </thead>
+        <tbody>
           {
             Object.keys(seasons).map(function(season) {
               return (
