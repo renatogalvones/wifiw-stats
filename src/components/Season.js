@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import base from './../base';
+import _uniq from 'lodash.uniq';
 
 class Season extends React.Component {
   constructor(props) {
@@ -28,10 +29,6 @@ class Season extends React.Component {
       state: 'coaches',
       asArray: true,
       then() {
-        // this.state.coaches.map((coach) => {
-        //   console.log(coach);
-        // })
-
       }
     });
   }
@@ -54,12 +51,17 @@ class Season extends React.Component {
 
     if (seasons.length > 0) {
       Object.keys(season[0].championships).map(function(championship) {
-        console.log(season[0].championships[championship].name);
-        var x = season[0].championships[championship].games.filter((value) => {
-          return (value.teamA.match('Renato') || value.teamA.match('RG Ganso'));
-        });
+        let teams = [],
+            uniqueTeams = [],
+            champ = season[0].championships[championship];
 
-        console.log(x);
+        champ.games.map((game) => {
+          teams.push(game.teamA, game.teamB);
+        })
+
+        console.log(_uniq(teams));;
+        // console.log(uniqueTeams);
+
 
         // return (
         //   <tr key={seasons[season].id}>
