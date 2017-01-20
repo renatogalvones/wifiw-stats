@@ -20,17 +20,65 @@ class Season extends React.Component {
       asArray: true,
       then() {
         this.setState({loading: false})
-        this.forceUpdate();
+        this.updateSeason();
       }
+    });
+  }
+
+  updateSeason() {
+    this.updateTeams();
+    this.calcGames();
+  }
+
+  updateTeams() {
+    let seasons = this.getSeasons(),
+        season = this.getSeason();
+
+    Object.keys(season.championships).map(function(championship) {
+      let teams = [],
+          uniqueTeams = [],
+          champ = season.championships[championship];
+
+      champ.games.map((game) => {
+        teams.push(game.teamA, game.teamB);
+      })
+
+      season.championships[championship].teams = _uniq(teams);
+    })
+
+    seasons.map((season, index) => {
+      if (season.id === this.getSelectedSeason()) {
+        seasons[index] = season;
+      };
+    })
+
+    this.setState({
+      seasons: seasons
     });
 
-    base.syncState('coaches', {
-      context: this,
-      state: 'coaches',
-      asArray: true,
-      then() {
-      }
+
+  }
+
+  getSelectedSeason() {
+    return this.props.params.seasonId;
+  }
+
+  getSeasons() {
+    return this.state.seasons
+  }
+
+  getSeason() {
+    let seasons = this.getSeasons();
+    let season = seasons.filter((season) => {
+      return this.props.params.seasonId === season.id
     });
+
+    return season[0];
+  }
+
+  calcGames() {
+    let seasons = this.state.seasons;
+
   }
 
   header() {
@@ -43,49 +91,11 @@ class Season extends React.Component {
     )
   }
 
-  listChampionships() {
-    let seasons = this.state.seasons;
-    let season = seasons.filter((season) => {
-      return this.props.params.seasonId === season.id
-    });
-
-    if (seasons.length > 0) {
-      Object.keys(season[0].championships).map(function(championship) {
-        let teams = [],
-            uniqueTeams = [],
-            champ = season[0].championships[championship];
-
-        champ.games.map((game) => {
-          teams.push(game.teamA, game.teamB);
-        })
-
-        console.log(_uniq(teams));;
-        // console.log(uniqueTeams);
-
-
-        // return (
-        //   <tr key={seasons[season].id}>
-        //     <td>
-        //       <Link to={"/seasons/" + seasons[season].id}>{seasons[season].id}</Link>
-        //     </td>
-        //   </tr>
-        // )
-      })
-
-    }
-
-    return (
-      <tbody></tbody>
-    )
-  }
 
   render() {
-
-
     return (
       <table>
         { this.header() }
-        { this.listChampionships() }
       </table>
     )
   }
