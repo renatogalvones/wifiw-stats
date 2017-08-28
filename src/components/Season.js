@@ -19,11 +19,18 @@ class Season extends React.Component {
       state: 'seasons',
       asArray: true,
       then() {
-        this.setState({loading: false})
-        this.updateSeason();
+        const seasons = this.state.seasons;
+        console.log(seasons);
+        seasons[0].championships[0].coaches[3] = 'PORTUGAL - Vitor Zagallo';
+        console.log(seasons[0].championships[0].coaches[2]);
+        this.setState({ seasons: seasons });
+        this.setState({ loading: false });
+        // this.updateSeason();
       }
     });
   }
+
+
 
   updateSeason() {
     this.updateTeams();
@@ -31,6 +38,7 @@ class Season extends React.Component {
   }
 
   updateTeams() {
+    console.log('updateTeams');
     let seasons = this.getSeasons(),
         season = this.getSeason();
 
