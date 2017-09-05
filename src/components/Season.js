@@ -20,10 +20,16 @@ class Season extends React.Component {
       asArray: true,
       then() {
         const seasons = this.state.seasons;
+        seasons.map(season => {
+          return season.championships.map(championship => {
+            console.log('CHAMP: ',season.id + ' - ' + championship.name);
+            delete championship.coaches;
+            return championship;
+          });
+        });
         console.log(seasons);
-        seasons[0].championships[0].coaches[3] = 'PORTUGAL - Vitor Zagallo';
-        console.log(seasons[0].championships[0].coaches[2]);
-        this.setState({ seasons: seasons });
+
+        // this.setState({ seasons: seasons });
         this.setState({ loading: false });
         // this.updateSeason();
       }
