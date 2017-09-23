@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "lodash.uniq": "^4.5.0",
-    "penis": "github:edankwan/penis.js",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-router": "4.0.0-alpha.3"
+    "react-redux": "^5.0.6",
+    "react-router": "4.0.0-alpha.3",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
