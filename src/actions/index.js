@@ -2,14 +2,14 @@ export function addCoach(name) {
   return {
     type: 'ADD_COACH',
     name,
-  }
+  };
 }
 
 export function removeCoach(index) {
   return {
     type: 'REMOVE_COACH',
     index,
-  }
+  };
 }
 
 export function editCoach(index, name) {
@@ -17,5 +17,5 @@ export function editCoach(index, name) {
     type: 'EDIT_COACH',
     index,
     name,
-  }
+  };
 }
