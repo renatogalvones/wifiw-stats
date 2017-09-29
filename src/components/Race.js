@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addCoach } from '../actions/';
 
-const Race = ({ dispatch }) => {
+const Race = ({ coaches, onAddCoach }) => {
   return (
     <div>
-      galvao
-      {/* <h1>Corrida dos campeões</h1>
+      <h1>Corrida dos campeões</h1>
       <table>
         <thead>
           <tr>
@@ -15,23 +14,26 @@ const Race = ({ dispatch }) => {
           </tr>
         </thead>
         <tbody>
-          <tr>{ value }</tr>
+          <tr></tr>
         </tbody>
-      </table> */}
-      {/* <button onClick={() => { store.dispatch({ type: 'INCREMENT' })} }>ADD</button> */}
+      </table>
+      <button onClick={() => { onAddCoach('galvao'); }}>ADD</button>
       {/* <button onClick={() => { store.dispatch({ type: 'DECREMENT' })} }>REMOVE</button> */}
     </div>
   );
 };
 
-// const mapStateToProps = state => ({
-//   coaches: getCoaches(state.coaches),
-// });
+const mapStateToProps = state => ({
+  coaches: state.coaches,
+});
 
-const mapDispatchToProps = {
-  onAddCoach: addCoach,
-};
+const mapDispatchToProps = dispatch => ({
+  onAddCoach: newCoach => dispatch(addCoach(newCoach)),
+});
 
-const RaceConnected = connect()(Race);
+const RaceConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Race);
 
 export default RaceConnected;
