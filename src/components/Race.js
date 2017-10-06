@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCoach } from '../actions/';
 
+
 class Race extends Component {
   constructor() {
     super();
@@ -24,7 +25,7 @@ class Race extends Component {
 
     return (
       <div>
-        {/* <h1>Corrida dos campeões</h1> */}
+        <h1>Corrida dos campeões</h1>
         <form onSubmit={this.addCoach}>
           <p>Adicionar Treinador</p>
           <input type="text" ref={(ref) => { this.newCoach = ref; }} />

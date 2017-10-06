@@ -1,15 +1,10 @@
 import * as types from '../constants/ActionTypes';
 
-const initialState = [
-  {
-    name: 'Galvão',
-    id: 0,
-  },
-];
-console.log(types);
-function coaches(state = initialState, action) {
+const initialState = [];
+
+function championships(state = initialState, action) {
   switch (action.type) {
-    case types.ADD_COACH: {
+    case types.ADD_CHAMPIONSHIP: {
       return [
         ...state,
         {
@@ -19,10 +14,10 @@ function coaches(state = initialState, action) {
       ];
     }
 
-    case types.DELETE_COACH:
+    case types.DELETE_CHAMPIONSHIP:
       return state.filter(coach => coach.id !== action.id);
 
-    case types.EDIT_COACH:
+    case types.EDIT_CHAMPIONSHIP:
       return state.map((coach) => {
         if (coach.id === action.id) {
           return { ...coach, name: action.name };
@@ -36,4 +31,4 @@ function coaches(state = initialState, action) {
   }
 }
 
-export default coaches;
+export default championships;
